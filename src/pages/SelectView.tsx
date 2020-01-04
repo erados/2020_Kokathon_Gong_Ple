@@ -5,7 +5,7 @@ import "./selectViewStyle.css";
 
 const SelectView: React.FC = () => {
     return (<IonApp>
-
+<div id="wrapper"/>
             <IonPage>
 
                 <IonHeader translucent>
@@ -119,7 +119,7 @@ export const ListExample: React.FC = () => {
         setCards((prevCards) => [data, ...prevCards]);
     }, []);
     return (
-        <IonContent>
+        <IonContent style={{backgroundColor: 'transparent'}}>
             <IonList>
                 <IonItem className="selectView">
                     <IonLabel>
@@ -136,7 +136,7 @@ export const ListExample: React.FC = () => {
                     ))
                 }
             </IonList >
-            <button onClick={() => handleAddExam({ date: 'test', title: 'test', progress: 0 })}>test</button>
+            <button onClick={() => handleAddExam({ date: 'date', title: 'title', progress: 0 })}>test</button>
         </IonContent >
     )
 };
