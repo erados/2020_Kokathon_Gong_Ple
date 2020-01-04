@@ -26,15 +26,17 @@ import ListExample from "./pages/ToDoList";
 import CalendarRedirect from "./pages/CalendarRedirect"
 import FilteringUsers from "./pages/FilteringUsers";
 import SelectView from "./pages/SelectView";
+import Main from "./pages/Main"
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
+          <Route path="/main" component={Main} exact={true} />
           <Route path="/home" component={Home} exact={true} />
           <Route path="/select" component={SelectView} exact={true} />
           <Route path="/friends" component={FilteringUsers} exact={true} />
           <Route path="/calendar" component={CalendarRedirect} exact={true} />
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
+          <Route  path="/" exact={true} render={() => <Redirect to="/main" />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

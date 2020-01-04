@@ -110,7 +110,7 @@ export const ListExample: React.FC = () => {
         {
             date: "2020.04.01",
             title: "2020 - 1학기 중간고사",
-            progress: 20,
+            progress: 90,
         }
     ]);
 
