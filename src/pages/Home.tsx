@@ -12,7 +12,7 @@ class Home extends Component {
     }
     render() {
         return (
-            <Calendar/>
+            <Calendar success={[1, 1, 0]}/>
         );
     }
 }
