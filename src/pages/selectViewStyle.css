@@ -16,8 +16,8 @@ ion-card.selectView{
 ion-card.addbtn{
     padding-top: 6vh;
 }
-ion-list {
-    background-color: rgba(255, 255, 255, 0.75)!important;
+ion-list.selectView {
+    background-color: rgba(255, 255, 255, 0.6)!important;
 }
 
 header {

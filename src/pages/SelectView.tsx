@@ -5,7 +5,6 @@ import "./selectViewStyle.css";
 
 const SelectView: React.FC = () => {
     return (<IonApp>
-<div id="wrapper"/>
             <IonPage>
 
                 <IonHeader translucent>
@@ -120,7 +119,7 @@ export const ListExample: React.FC = () => {
     }, []);
     return (
         <IonContent style={{backgroundColor: 'transparent'}}>
-            <IonList>
+            <IonList className="selectView">
                 <IonItem className="selectView">
                     <IonLabel>
                         <PopoverExample />
