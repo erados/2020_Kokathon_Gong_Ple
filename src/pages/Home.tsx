@@ -4,6 +4,7 @@ import {
 import React, {Component} from 'react';
 import FilteringUsers from "./FilteringUsers";
 import Calendar from './Calendar';
+import ClassList from './test';
 
 class Home extends Component {
 
@@ -13,7 +14,8 @@ class Home extends Component {
 
     render() {
         return (
-            <Calendar success={[1, 1, 0]}/>
+           // <Calendar success={[1, 1, 0]}/>
+            <ClassList/>
         );
     }
 }

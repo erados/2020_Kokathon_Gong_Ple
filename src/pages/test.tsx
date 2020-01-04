@@ -1,57 +1,79 @@
 import React from 'react';
-import { IonIcon, IonItem, IonLabel, IonReorder, IonContent } from '@ionic/react';
+import axios from 'axios';
+import {
+    IonButtons,
+    IonList,
+    IonItem,
+    IonHeader,
+    IonToolbar,
+    IonMenuButton,
+    IonTitle,
+    IonContent,
+    IonButton,
+    IonPage
+} from '@ionic/react';
 
-const ReorderExample: React.FC = () => (
-    <IonContent>
-        {/*-- Default reorder icon, end aligned items --*/}
-        <IonItem>
-            <IonLabel>Item 1</IonLabel>
-            <IonReorder slot="end" />
-        </IonItem>
+class ClassList extends React.Component{
+    //php는 euc-kr, react는 utf-8이 기본 인코딩
+    state = {
+        isLoading: true,
+        plan_arr: []
+    }
 
-        <IonItem>
-            <IonLabel>Item 2</IonLabel>
-            <IonReorder slot="end" />
-        </IonItem>
 
-        {/*-- Default reorder icon, start aligned items --*/}
-        <IonItem>
-            <IonReorder slot="start" />
-            <IonLabel>Item 3</IonLabel>
-        </IonItem>
+    getList= async() =>{
+        const {data} = await axios({
+            url: "http://supreme5876.dothome.co.kr/rest/return-plans.php?user_id=sepaper&possible_time=400",
+            method: 'get'
+        });
+        console.log(data);
+        this.setState({sessionId: data});
+        const decode= atob(data);
+        const {success} = JSON.parse(decode);
+        const {result} = JSON.parse(decode);
+        console.log(success);
+        console.log(result);
 
-        <IonItem>
-            <IonReorder slot="start" />
-            <IonLabel>Item 4</IonLabel>
-        </IonItem>
+        this.setState({isLoading: false, plan_arr:result});
+    }
+    componentDidMount(){
+        this.getList();
+    }
+    render(){
 
-        {/*-- Custom reorder icon end items --*/}
-        <IonItem>
-            <IonLabel>Item 5</IonLabel>
-            <IonReorder slot="end">
-                <IonIcon name="pizza" />
-            </IonReorder>
-        </IonItem>
+        const {isLoading,plan_arr} = this.state;
+        return (<div>
+            {isLoading?
+                "loading...":
+                (<div>
+                    <IonPage>
+                        <IonHeader>
+                            <IonToolbar color="primary">
+                                <IonButtons slot="start">
+                                    <IonMenuButton autoHide={false}/>
+                                </IonButtons>
+                                <IonTitle>Home</IonTitle>
+                            </IonToolbar>
+                        </IonHeader>
+                        <IonContent color="primary" >
+                            <IonList color="primary">
 
-        <IonItem>
-            <IonLabel>Item 6</IonLabel>
-            <IonReorder slot="end">
-                <IonIcon name="pizza" />
-            </IonReorder>
-        </IonItem>
+                                {
+                                    plan_arr.map((plan,index) => {
+                                        return (
+                                            <IonItem>
+                                                {plan['class_name']} {plan['chapter_idx']} {plan['chapter_name']} {plan['exp_time']}분
+                                            </IonItem>
+                                        );
+                                    })
+                                }
+                            </IonList>
+                        </IonContent>
+                    </IonPage>
+                </div>) //map은 item과 item number를 pair로 줄 수 있다.
+            } </div>)// =>뒤에 괄호면 component, renderMovie도 component반환
+    }
+}
+export default ClassList;
 
-        {/*-- Items wrapped in a reorder, entire item can be dragged --*/}
-        <IonReorder>
-            <IonItem>
-                <IonLabel>Item 7</IonLabel>
-            </IonItem>
-        </IonReorder>
 
-        <IonReorder>
-            <IonItem>
-                <IonLabel>Item 8</IonLabel>
-            </IonItem>
-        </IonReorder>
-    </IonContent>
-);
-export default ReorderExample
