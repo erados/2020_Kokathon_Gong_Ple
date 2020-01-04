@@ -10,9 +10,10 @@ import axios from "axios";
 
 interface Props {
     name: string;
-    dday: number[];
+    dday: number[][];
     success: number[];
     percentage:number;
+    testName:string[];
 }
 
 class Calendar extends Component<Props> {
@@ -21,13 +22,7 @@ class Calendar extends Component<Props> {
         hide: false,
         clickedRow: 0,
         isLoading: true,
-        plan_arr: [],
-        data:
-            [{id: 1, name: "1", checked: false}, {id: 2, name: "2", checked: false}, {
-                id: 3,
-                name: "3",
-                checked: true
-            }, {id: 4, name: "4", checked: true}, {id: 5, name: "5", checked: true}]
+        plan_arr: []
     }
     months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -54,8 +49,8 @@ class Calendar extends Component<Props> {
                     className={
                         (j < today && j > 0) ? ((this.props.success[j - 1] === 1) ? "success" : "failure") : ""}>{(j > 0) ? ((j <= lastDay) ? j : "") : ""}{((j == today) ? (
                     <br/>) : "")}{((j == today) ?
-                    <span className={"today"}>TODAY</span> : "")}{((j == this.props.dday[2]) ?
-                    <br/> : "")}{((j == this.props.dday[2]) ?
+                    <span className={"today"}>TODAY</span> : "")}{((this.props.dday.find(k=>k[2]==j)) ?
+                    <br/> : "")}{((this.props.dday.find(k=>k[2]==j)) ?
                     <span className={"dday"}>D-DAY</span> : "")}</IonCol>);
             let row = ((i) / 7).toFixed(0);
             children.push(<IonRow onClick={this.onRowClicked.bind(this, row)}>{temp}</IonRow>);
@@ -65,36 +60,46 @@ class Calendar extends Component<Props> {
             <IonListHeader>공부할 것</IonListHeader>
             {this.state.plan_arr.map((obj: any, idx: number) => {
                 if (!obj.checked)
-                    return <ToDoList callB={this.onCheckedChange.bind(this)} id={1} checked={obj.checked}
-                                     name={obj.chapter_name} chapterName={obj.chapter_name} minute={obj.exp_time}
-                                     chapterIdx={obj.chapter_idx}/>
+                    return <ToDoList callB={this.onCheckedChange.bind(this, obj.key, obj.checked)} key={obj.key} id={obj.chapterIdx} checked={obj.checked}
+                                     name={obj.chapter_name} chapterName={obj.chapter_name} minute={obj.exp_time} exp_time={obj.exp_time}
+                                     chapterIdx={obj.chapter_idx} plan_priority={obj.plan_priority} class_name={obj.class_name} class_id={obj.class_id}/>
             })}
             <IonListHeader>공부한 것</IonListHeader>
             {this.state.plan_arr.map((obj: any, idx: number) => {
                 if (obj.checked)
-                    return <ToDoList callB={this.onCheckedChange.bind(this)} id={1} checked={obj.checked}
-                                     name={obj.chapter_name} chapterName={obj.chapter_name} minute={obj.exp_time}
-                                     chapterIdx={obj.chapter_idx}/>
-            })}
+                    return <ToDoList callB={this.onCheckedChange.bind(this, obj.key, obj.checked)} key={obj.key} id={obj.chapterIdx} checked={obj.checked}
+                                     name={obj.chapter_name} chapterName={obj.chapter_name} minute={obj.exp_time} exp_time={obj.exp_time}
+                                     chapterIdx={obj.chapter_idx} plan_priority={obj.plan_priority} class_name={obj.class_name} class_id={obj.class_id}/>
+           })}
         </IonList>);
         return children;
     }
 
-    onCheckedChange(id: number, checked: boolean) {
+    onCheckedChange(key: number, checked: boolean) {
+        this.sendList(key, !checked);
         this.setState({
-            data: this.state.data.map((obj: any) => obj.id === id ? {
-                id: obj.id,
-                name: obj.name,
+            plan_arr: this.state.plan_arr.map((obj: any) => obj.key === key ? {
+                key: obj.key,
+                class_id: obj.class_id,
+                class_name: obj.class_name,
+                chapter_idx: obj.chapter_idx,
+                chapter_name: obj.chapter_name,
+                exp_time: obj.exp_time,
+                plan_priority: obj.plan_priority,
                 checked: !checked
             } : obj)
         });
     }
 
-    // sendList= async() =>{
-    //     const {data} = await axios({
-    //         url: "http://supreme5876.dothome.co.kr/rest/return-plans.php?user_id=sepaper&id={데이터고유id}&checked={체크여부},
-    //         method: 'get'
-    //     });
+    sendList= async(key:number, checked:boolean) => {
+        let complete = (checked) ? "1" : "0";
+        const {data} = await axios({
+            url: "http://supreme5876.dothome.co.kr/rest/complete_plan.php?key="+key.toString()+"&complete="+complete,
+            method: 'get'
+        });
+        console.log("http://supreme5876.dothome.co.kr/rest/complete_plan.php?key="+key.toString()+"&complete="+complete);
+        return console.log(JSON.parse(atob(data))["success"]);
+    }
     onRowClicked(rowNum: any) {
         if (rowNum >= this.state.clickedRow) this.setState({hide: !this.state.hide});
         this.setState({clickedRow: rowNum});
@@ -127,15 +132,11 @@ class Calendar extends Component<Props> {
             </IonItem>
         );
     })
-    a = new Date(this.props.dday[0], this.props.dday[1], this.props.dday[2]).getTime()-this.date.getTime();
+    a = new Date(this.props.dday[0][0], this.props.dday[0][1], this.props.dday[0][2]).getTime()-this.date.getTime();
     dday = ((this.a)/86400000+1).toFixed(0);
     render() {
         return (
-
             <IonContent>
-                {
-
-                }
                 <div>
                     <h1 className={"month"}>{"0" + (this.date.getMonth() + 1)}</h1>
                     <h2 className={"month_e"}>{this.months[this.date.getMonth()]}</h2>

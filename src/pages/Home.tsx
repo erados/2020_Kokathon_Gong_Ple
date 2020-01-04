@@ -14,7 +14,7 @@ class Home extends Component {
     render() {
 
         return (
-           <Calendar name = {"2020 1학기 중간고사"} dday={[2020,0,20]} success={[1, 1, 0]} percentage={12}/>
+           <Calendar name = {"2020 1학기 중간고사"} dday={[[2020,0,20]]} success={[1, 1, 0]} percentage={12} testName={["민법시험"]}/>
             // <ClassList/>
         );
     }

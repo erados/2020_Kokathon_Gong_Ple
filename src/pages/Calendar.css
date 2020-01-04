@@ -13,11 +13,15 @@ h1.month {
     font-size: 44px;
     font-weight: 800;
     margin-left: 20px;
+    top: 17px;
+    position: relative;
 }
 
-h2.month_E {
+h2.month_e {
     font-weight: 800 !important;
     font-size: 32px;
+    top: 17px;
+    position: relative;
 }
 
 h1, h2, h3 {
@@ -80,7 +84,9 @@ span.dday {
     color: crimson;
     font-weight: 700;
 }
-
+ion-grid{
+    height: 85vh;
+}
 ion-list {
     position: relative;
     border: 1px solid rebeccapurple;

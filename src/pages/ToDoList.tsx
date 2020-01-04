@@ -13,6 +13,10 @@ interface Props {
     chapterIdx: number;
     chapterName: string;
     minute: number;
+    exp_time:number;
+    plan_priority:number;
+    class_name:string;
+    class_id:number;
 }
 
 class ToDoList extends Component<Props> {
@@ -22,7 +26,7 @@ class ToDoList extends Component<Props> {
     }
 
     render() {
-        const {name, checked, callB, id, chapterIdx, chapterName, minute} = this.props;
+        const {checked, callB, id, chapterIdx, chapterName, minute, exp_time, plan_priority, class_name, class_id} = this.props;
         return <IonItem>
             <IonLabel> {chapterName}-{chapterIdx} {'\t'} {minute}분</IonLabel>
             <IonCheckbox slot="start" onClick={callB.bind(this, id, checked)}
