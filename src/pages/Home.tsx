@@ -11,11 +11,11 @@ class Home extends Component {
     constructor(props: any) {
         super(props);
     }
-
     render() {
+
         return (
-           // <Calendar success={[1, 1, 0]}/>
-            <ClassList/>
+           <Calendar name = {"2020 1학기 중간고사"} dday={[2020,0,20]} success={[1, 1, 0]} percentage={12}/>
+            // <ClassList/>
         );
     }
 }

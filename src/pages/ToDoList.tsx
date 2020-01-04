@@ -10,6 +10,9 @@ interface Props {
     checked: boolean;
     callB: any;
     id: number;
+    chapterIdx: number;
+    chapterName: string;
+    minute: number;
 }
 
 class ToDoList extends Component<Props> {
@@ -19,10 +22,12 @@ class ToDoList extends Component<Props> {
     }
 
     render() {
+        const {name, checked, callB, id, chapterIdx, chapterName, minute} = this.props;
         return <IonItem>
-            <IonLabel>{this.props.name}</IonLabel>
-            <IonCheckbox slot="start" onClick={this.props.callB.bind(this, this.props.id, this.props.checked)}
-                         checked={this.props.checked}/>
+            <IonLabel> {chapterName}-{chapterIdx} {'\t'} {minute}분</IonLabel>
+            <IonCheckbox slot="start" onClick={callB.bind(this, id, checked)}
+                         checked={checked}
+            />
         </IonItem>
     }
 }

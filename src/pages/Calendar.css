@@ -1,3 +1,5 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
 ion-col {
     border-color: #edf2f6;
     border-style: solid;
@@ -7,21 +9,25 @@ ion-col {
     text-align: center;
 }
 
-h1 {
-    font-size: 4em !important;
-    font-weight: 500 !important;
+h1.month {
+    font-size: 44px;
+    font-weight: 800;
     margin-left: 20px;
 }
 
-h2 {
-    font-weight: 600 !important;
+h2.month_E {
+    font-weight: 800 !important;
+    font-size: 32px;
 }
 
 h1, h2, h3 {
+    font-family: 'NanumSquare', sans-serif;
     display: inline
 }
 
 div.calendarHead {
+    font-family: 'NanumSquare', sans-serif;
+    font-weight: 700 !important;
     text-align: center !important;
     position: relative;
     top: -2em;
@@ -37,28 +43,50 @@ h1.percent {
     font-style: italic;
     right: 20px;
     top: 17px;
-    font-size: 50px !important;
+    font-size: 40px;
     margin: 0;
-    color: gray;
+    color: #96ACC2;
+}
+
+ion-col {
+    font-family: 'nanumsquare';
 }
 
 ion-col.failure {
-    background-color: #EABFBF
+    /*background-color: #EABFBF*/
+    background-color: rgba(216, 132, 132, 0.5);
 }
 
 ion-col.success {
-    background-color: #96ACC2
+    /*background-color: #96ACC2*/
+    background-color: rgba(127, 127, 127, 0.5);
 }
 
 ion-col.days {
     padding: 0 0 4px 0;
     height: fit-content;
+    font-family: 'nanumsquare';
+    font-size: 14px;
 }
 
 span.today {
-    font-size: 10px;
+    font-size: 14px;
+    font-weight: 800;
+    font-family: 'nanumsquare';
+}
+
+span.dday {
+    font-size: 20px;
+    color: crimson;
+    font-weight: 700;
 }
 
 ion-list {
     position: relative;
+    border: 1px solid rebeccapurple;
+    box-shadow: red;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding-left: 1px !important;
 }
+
+/*@font-face { font-family: 'NanumSquareRound'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff'); font-weight: normal; font-style: normal; }*/
