@@ -42,10 +42,23 @@ h1.percent {
     color: gray;
 }
 
-ion-col.failure{background-color: #EABFBF}
-ion-col.success{background-color: #96ACC2}
-ion-col.days{height: fit-content;}
-span.today{font-size: 10px;}
-ion-list > ion-item {
-    --inner-padding-top:0px;
+ion-col.failure {
+    background-color: #EABFBF
+}
+
+ion-col.success {
+    background-color: #96ACC2
+}
+
+ion-col.days {
+    padding: 0 0 4px 0;
+    height: fit-content;
+}
+
+span.today {
+    font-size: 10px;
+}
+
+ion-list {
+    position: relative;
 }
