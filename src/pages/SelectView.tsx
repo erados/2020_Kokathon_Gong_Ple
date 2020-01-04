@@ -44,7 +44,7 @@ export const Toolbar: React.FC = () => (
 );
 
 export const AddCard: React.FC = () => (
-    <IonCard style={{ background: 'rgba(105, 105, 105, 0.3)', border: '0px dotted rgb(105, 105, 105)' }}>
+    <IonCard className="selectView addbtn" style={{ background: 'rgba(105, 105, 105, 0.3)', border: '0px dotted rgb(105, 105, 105)' }}>
         <IonGrid>
             <IonRow className="ion-justify-content-center">
                 <div>
@@ -68,10 +68,10 @@ interface CardProps {
     progress: number;
 }
 export const Card: React.FC<CardProps> = ({ date, title, progress }) => (
-    <IonCard class="progress" href="#">
+    <IonCard class="selectView progress" href="/Calendar">
         <IonCardHeader>
-            <IonCardSubtitle>{date}</IonCardSubtitle>
-            <IonCardTitle>{title}</IonCardTitle>
+            <IonCardTitle style={{ fontSize: '24px' }}><span>{title}</span></IonCardTitle>
+            <IonCardSubtitle style={{ fontSize: '14px' }}>{date}</IonCardSubtitle>
         </IonCardHeader>
         <IonCardContent className="ion-text-end">
             {progress}%
@@ -121,14 +121,14 @@ export const ListExample: React.FC = () => {
     return (
         <IonContent>
             <IonList>
-                <IonItem>
+                <IonItem className="selectView">
                     <IonLabel>
                         <PopoverExample />
                     </IonLabel>
                 </IonItem>
                 {
                     cards.map((card) => (
-                        <IonItem>
+                        <IonItem className="selectView">
                             <IonLabel>
                                 <Card date={card.date} title={card.title} progress={card.progress} />
                             </IonLabel>

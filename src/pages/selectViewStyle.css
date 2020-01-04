@@ -3,6 +3,16 @@
     --ion-safe-area-bottom: 22px;
 }
 
+ion-item.selectView{
+    width: 50vw;
+    display: inline-block;
+}
+ion-card.selectView{
+    height: 30vh;
+}
+ion-card.addbtn{
+    padding-top: 6vh;
+}
 header {
     font-size: 11px;
     font-weight: 600;

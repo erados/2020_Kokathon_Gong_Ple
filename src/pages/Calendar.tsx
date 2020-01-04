@@ -54,7 +54,7 @@ class Calendar extends Component<Props> {
             let row = ((i) / 7).toFixed(0);
             children.push(<IonRow onClick={this.onRowClicked.bind(this, row)}>{temp}</IonRow>);
         }
-        children.push(<IonList
+        children.push(<IonList className="calendar"
             style={{display: ((this.state.hide) ? 'block' : 'none'), top: -60 + this.state.clickedRow * 15 + 'vh'}}>
             <IonListHeader>공부할 것</IonListHeader>
             {this.state.plan_arr.map((obj: any, idx: number) => {

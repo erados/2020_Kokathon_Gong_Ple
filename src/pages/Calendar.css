@@ -108,7 +108,7 @@ ion-grid.calendar {
     height: 85vh;
 }
 
-ion-list {
+ion-list.calendar {
     position: relative;
     border: 1px solid rebeccapurple;
     box-shadow: red;
