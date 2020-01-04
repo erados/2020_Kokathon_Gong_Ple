@@ -22,6 +22,7 @@ h2.month_e {
     font-size: 32px;
     top: 17px;
     position: relative;
+    margin-left: 10px;
 }
 
 h1, h2, h3 {
@@ -40,6 +41,24 @@ div.calendarHead {
 
 div.calendarHead h3.dday {
     margin-left: 1em;
+}
+div.topAd{
+    margin: 7px;
+    margin-left: 24px;
+}
+span.adContent {
+    font-family: 'nanumsquare';
+    font-size: 12.5px;
+}
+
+span.adSign {
+    background-color: rgba(254, 208, 53, 0.5);
+    font-family: 'nanumsquare';
+    font-weight: bold;
+    font-size: 14px;
+    padding: 4px 12px;
+    margin: 7px;
+    border-radius: 8px;
 }
 
 h1.percent {
@@ -62,8 +81,8 @@ ion-col.failure {
 }
 
 ion-col.success {
-    /*background-color: #96ACC2*/
-    background-color: rgba(127, 127, 127, 0.5);
+    background-color: #96ACC2
+    /*background-color: rgba(127, 127, 127, 0.5);*/
 }
 
 ion-col.days {
@@ -84,9 +103,11 @@ span.dday {
     color: crimson;
     font-weight: 700;
 }
-ion-grid{
+
+ion-grid {
     height: 85vh;
 }
+
 ion-list {
     position: relative;
     border: 1px solid rebeccapurple;

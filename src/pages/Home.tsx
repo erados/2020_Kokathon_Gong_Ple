@@ -1,12 +1,8 @@
 import {
-    IonButton, IonContent,
-    IonList, IonListHeader
+    IonButton, IonContent
 } from '@ionic/react';
 import React, {Component} from 'react';
-import FilteringUsers from "./FilteringUsers";
-// import Calendar from './Calendar';
-import ClassList from './test';
-import { Route } from 'react-router-dom';
+
 class Home extends Component {
 
     constructor(props: any) {

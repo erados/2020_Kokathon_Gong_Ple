@@ -49,9 +49,8 @@ class Calendar extends Component<Props> {
                     className={
                         (j < today && j > 0) ? ((this.props.success[j - 1] === 1) ? "success" : "failure") : ""}>{(j > 0) ? ((j <= lastDay) ? j : "") : ""}{((j == today) ? (
                     <br/>) : "")}{((j == today) ?
-                    <span className={"today"}>TODAY</span> : "")}{((this.props.dday.find(k=>k[2]==j)) ?
-                    <br/> : "")}{((this.props.dday.find(k=>k[2]==j)) ?
-                    <span className={"dday"}>D-DAY</span> : "")}</IonCol>);
+                    <span className="today">TODAY</span> : "")}{((this.props.dday.find((k,i)=>k[2]==j)) ?
+                    <div><span className="dday">D-DAY</span><br/><span className="testName">{this.props.testName[this.props.dday.findIndex(k=>k[2]==j)]}</span> </div> : "")}</IonCol>);
             let row = ((i) / 7).toFixed(0);
             children.push(<IonRow onClick={this.onRowClicked.bind(this, row)}>{temp}</IonRow>);
         }
@@ -110,14 +109,9 @@ class Calendar extends Component<Props> {
             url: "http://supreme5876.dothome.co.kr/rest/return-plans.php?user_id=sepaper&possible_time=400",
             method: 'get'
         });
-        console.log(data);
         this.setState({sessionId: data});
         const decode = atob(data);
-        const {success} = JSON.parse(decode);
         const {result} = JSON.parse(decode);
-        console.log(success);
-        console.log(result);
-
         this.setState({isLoading: false, plan_arr: result});
     }
 
@@ -132,19 +126,23 @@ class Calendar extends Component<Props> {
             </IonItem>
         );
     })
-    a = new Date(this.props.dday[0][0], this.props.dday[0][1], this.props.dday[0][2]).getTime()-this.date.getTime();
-    dday = ((this.a)/86400000+1).toFixed(0);
+
     render() {
+        const today = new Date();
+        const {dday, percentage} = this.props;
+        const a = new Date(dday[0][0], dday[0][1], dday[0][2]).getTime()-today.getTime();
+        const ddays = ((a)/86400000+1).toFixed(0);
         return (
             <IonContent>
+                <div className="topAd"><span className="adSign">AD</span><span className="adContent">마시면 학점이 0.5 올라가는 물약이 있다고? 지금 바로 웹에서 확인하자! 단돈 9,900원!</span></div>
                 <div>
-                    <h1 className={"month"}>{"0" + (this.date.getMonth() + 1)}</h1>
-                    <h2 className={"month_e"}>{this.months[this.date.getMonth()]}</h2>
+                    <h1 className="month">{"0" + (today.getMonth() + 1)}</h1>
+                    <h2 className="month_e">{this.months[today.getMonth()]}</h2>
                     <div className="calendarHead">
                         <h3>{this.props.name}</h3>
-                        <h3 className="dday">D-{this.dday}</h3>
+                        <h3 className="dday">D-{ddays}</h3>
                     </div>
-                    <h1 className="percent">{this.props.percentage}%</h1>
+                    <h1 className="percent">{percentage}%</h1>
                 </div>
                 <IonGrid>
                     {this.createCalendar()}
