@@ -104,7 +104,7 @@ span.dday {
     font-weight: 700;
 }
 
-ion-grid {
+ion-grid.calendar {
     height: 85vh;
 }
 

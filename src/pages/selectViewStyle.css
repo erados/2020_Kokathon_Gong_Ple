@@ -1,0 +1,119 @@
+:root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 22px;
+}
+
+header {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25em;
+    text-transform: uppercase;
+}
+
+section {
+    margin-top: 1em;
+    margin-bottom: 2.5em;
+}
+
+section:not(.full-width), .full-width>header {
+    padding: 0 10px;
+}
+
+ion-col.hydrated {
+    padding: 0;
+}
+
+.progress {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    transition: all 1s ease;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.progress .water_green {
+    position: absolute;
+    z-index: 1;
+    width: 200%;
+    padding-top: 200%;
+    left: -50%;
+    border-radius: 40%;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: spin;
+    animation-name: spin;
+    background: rgba(83, 252, 83, 0.2);
+    transition: all 1s ease;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+}
+
+.progress .water_orange {
+    position: absolute;
+    z-index: 1;
+    width: 200%;
+    padding-top: 200%;
+    left: -50%;
+    border-radius: 40%;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: spin;
+    animation-name: spin;
+    background: rgba(255, 127, 80, 0.2);
+    transition: all 1s ease;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+}
+
+.progress .water_red {
+    position: absolute;
+    z-index: 1;
+    width: 200%;
+    padding-top: 200%;
+    left: -50%;
+    border-radius: 40%;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: spin;
+    animation-name: spin;
+    background: rgba(220, 20, 60, 0.2);
+    transition: all 1s ease;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.progress .water_done {
+    width: inherit;
+    height: inherit;
+    background: rgba(90, 18, 25);
+}

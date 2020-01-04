@@ -73,7 +73,6 @@ class Calendar extends Component<Props> {
         </IonList>);
         return children;
     }
-
     onCheckedChange(key: number, checked: boolean) {
         this.sendList(key, !checked);
         this.setState({
@@ -144,7 +143,7 @@ class Calendar extends Component<Props> {
                     </div>
                     <h1 className="percent">{percentage}%</h1>
                 </div>
-                <IonGrid>
+                <IonGrid className="calendar">
                     {this.createCalendar()}
                 </IonGrid>
             </IonContent>

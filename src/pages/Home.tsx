@@ -13,6 +13,7 @@ class Home extends Component {
         return (
 <IonContent>
             <IonButton onClick={()=>window.location.href = "./Friends"}> Friends </IonButton>
+            <IonButton onClick={()=>window.location.href = "./Select"}> Select </IonButton>
           <IonButton onClick={()=>window.location.href = "./Calendar"}> Calendar </IonButton>
 </IonContent>
         );
