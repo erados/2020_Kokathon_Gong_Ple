@@ -1,11 +1,12 @@
 import {
-    IonList, IonListHeader,
+    IonButton, IonContent,
+    IonList, IonListHeader
 } from '@ionic/react';
 import React, {Component} from 'react';
 import FilteringUsers from "./FilteringUsers";
-import Calendar from './Calendar';
+// import Calendar from './Calendar';
 import ClassList from './test';
-
+import { Route } from 'react-router-dom';
 class Home extends Component {
 
     constructor(props: any) {
@@ -14,8 +15,10 @@ class Home extends Component {
     render() {
 
         return (
-           <Calendar name = {"2020 1학기 중간고사"} dday={[[2020,0,20]]} success={[1, 1, 0]} percentage={12} testName={["민법시험"]}/>
-            // <ClassList/>
+<IonContent>
+            <IonButton onClick={()=>window.location.href = "./Friends"}> Friends </IonButton>
+          <IonButton onClick={()=>window.location.href = "./Calendar"}> Calendar </IonButton>
+</IonContent>
         );
     }
 }
